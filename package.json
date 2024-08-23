@@ -1,85 +1,127 @@
 {
-    "name": "vscode-subword-navigation",
-    "version": "1.2.0",
-    "publisher": "ow",
-    "displayName": "Subword Navigation",
-    "description": "The missing code navigation feature.",
-    "icon": "images/icon.png",
-    "galleryBanner": {
-        "color": "#efedf9",
-        "theme": "light"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ow--/vscode-subword-navigation.git"
-    },
-    "bugs": {
-        "url": "https://github.com/ow--/vscode-subword-navigation/issues"
-    },
-    "engines": {
-        "vscode": "0.10.x"
-    },
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onCommand:subwordNavigation.cursorSubwordLeft",
-        "onCommand:subwordNavigation.cursorSubwordRight",
-        "onCommand:subwordNavigation.cursorSubwordLeftSelect",
-        "onCommand:subwordNavigation.cursorSubwordRightSelect",
-        "onCommand:subwordNavigation.deleteSubwordLeft",
-        "onCommand:subwordNavigation.deleteSubwordRight"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "keybindings": [
-            {
-                "command": "subwordNavigation.cursorSubwordRight",
-                "key": "alt+right",
-                "mac": "ctrl+right",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "subwordNavigation.cursorSubwordRightSelect",
-                "key": "alt+shift+right",
-                "mac": "ctrl+shift+right",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "subwordNavigation.cursorSubwordLeft",
-                "key": "alt+left",
-                "mac": "ctrl+left",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "subwordNavigation.cursorSubwordLeftSelect",
-                "key": "alt+shift+left",
-                "mac": "ctrl+shift+left",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "subwordNavigation.deleteSubwordLeft",
-                "key": "alt+backspace",
-                "mac": "ctrl+backspace",
-                "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "command": "subwordNavigation.deleteSubwordRight",
-                "key": "alt+delete",
-                "mac": "ctrl+delete",
-                "when": "editorTextFocus && !editorReadonly"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
-    },
-    "devDependencies": {
-        "@types/node": "^13.11.0",
-        "@types/vscode": "^1.43.0",
-        "typescript": "^3.8.3"
-    }
+  "name": "vscode-subword-navigation-fullwidth",
+  "version": "1.2.1",
+  "publisher": "ow",
+  "displayName": "Subword Navigation Fullwidth",
+  "description": "The missing code navigation feature for common fullwidth characters.",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#efedf9",
+    "theme": "light"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fadeness/vscode-subword-navigation-fullwidth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fadeness/vscode-subword-navigation-fullwidth/issues"
+  },
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:subwordNavigationFullwidth.cursorWordLeft",
+    "onCommand:subwordNavigationFullwidth.cursorWordRight",
+    "onCommand:subwordNavigationFullwidth.cursorWordLeftSelect",
+    "onCommand:subwordNavigationFullwidth.cursorWordRightSelect",
+    "onCommand:subwordNavigationFullwidth.deleteWordLeft",
+    "onCommand:subwordNavigationFullwidth.deleteWordRight",
+    "onCommand:subwordNavigationFullwidth.cursorSubwordLeft",
+    "onCommand:subwordNavigationFullwidth.cursorSubwordRight",
+    "onCommand:subwordNavigationFullwidth.cursorSubwordLeftSelect",
+    "onCommand:subwordNavigationFullwidth.cursorSubwordRightSelect",
+    "onCommand:subwordNavigationFullwidth.deleteSubwordLeft",
+    "onCommand:subwordNavigationFullwidth.deleteSubwordRight"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "subwordNavigationFullwidth.cursorWordRight",
+        "key": "ctrl+right",
+        "mac": "alt+right",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "subwordNavigationFullwidth.cursorWordRightSelect",
+        "key": "ctrl+shift+right",
+        "mac": "alt+shift+right",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "subwordNavigationFullwidth.cursorWordLeft",
+        "key": "ctrl+left",
+        "mac": "alt+left",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "subwordNavigationFullwidth.cursorWordLeftSelect",
+        "key": "ctrl+shift+left",
+        "mac": "alt+shift+left",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "subwordNavigationFullwidth.deleteWordLeft",
+        "key": "ctrl+backspace",
+        "mac": "alt+backspace",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "subwordNavigationFullwidth.deleteWordRight",
+        "key": "ctrl+delete",
+        "mac": "alt+delete",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "subwordNavigationFullwidth.cursorSubwordRight",
+        "key": "alt+right",
+        "mac": "ctrl+right",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "subwordNavigationFullwidth.cursorSubwordRightSelect",
+        "key": "alt+shift+right",
+        "mac": "ctrl+shift+right",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "subwordNavigationFullwidth.cursorSubwordLeft",
+        "key": "alt+left",
+        "mac": "ctrl+left",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "subwordNavigationFullwidth.cursorSubwordLeftSelect",
+        "key": "alt+shift+left",
+        "mac": "ctrl+shift+left",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "subwordNavigationFullwidth.deleteSubwordLeft",
+        "key": "alt+backspace",
+        "mac": "ctrl+backspace",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "subwordNavigationFullwidth.deleteSubwordRight",
+        "key": "alt+delete",
+        "mac": "ctrl+delete",
+        "when": "editorTextFocus && !editorReadonly"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^13.11.0",
+    "@types/vscode": "^1.43.0",
+    "typescript": "^3.8.3"
+  }
 }
