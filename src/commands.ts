@@ -36,34 +36,34 @@ export function deleteWordRight(editor: TextEditor) {
 }
 
 export function cursorSubwordLeft(editor: TextEditor) {
-  cursorSubword(editor, left, move)
+  cursorSubword(editor, left, move, true)
 }
 
 export function cursorSubwordRight(editor: TextEditor) {
-  cursorSubword(editor, right, move)
+  cursorSubword(editor, right, move, true)
 }
 
 export function cursorSubwordLeftSelect(editor: TextEditor) {
-  cursorSubword(editor, left, select)
+  cursorSubword(editor, left, select, true)
 }
 
 export function cursorSubwordRightSelect(editor: TextEditor) {
-  cursorSubword(editor, right, select)
+  cursorSubword(editor, right, select, true)
 }
 
 export function deleteSubwordLeft(editor: TextEditor) {
-  deleteSubword(editor, left, false)
+  deleteSubword(editor, left, true)
 }
 
 export function deleteSubwordRight(editor: TextEditor) {
-  deleteSubword(editor, right, false)
+  deleteSubword(editor, right, true)
 }
 
 function cursorSubword(
   editor: TextEditor,
   next: BoundaryFunc,
   sel: SelectionFunc,
-  checkSubword: boolean = true
+  checkSubword: boolean
 ) {
   editor.selections = editor.selections.map((s) =>
     sel(s, next(editor.document, s.active, checkSubword))

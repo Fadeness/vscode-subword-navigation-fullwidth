@@ -1,6 +1,6 @@
 {
   "name": "vscode-subword-navigation-fullwidth",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "publisher": "ow",
   "displayName": "Subword Navigation Fullwidth",
   "description": "The missing code navigation feature for common fullwidth characters.",

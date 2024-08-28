@@ -4,7 +4,11 @@ const whitespace = /\s/
 const separators =
   /[\`\~\!\@\#\$\%\^\&\*\(\)\-\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\uFF08\uFF09\uFF0C\uFF1A\uFF1B\uFF01\uFF1F\uFF02\u3002\u3001\u201c\u201d\u2018\u2019\u300a\u300b\s]/
 
-export function nextBoundaryLeft(document: TextDocument, position: Position) {
+export function nextBoundaryLeft(
+  document: TextDocument,
+  position: Position,
+  checkSubword: boolean
+) {
   // find previous word boundary
   const cur = document.lineAt(position)
   if (position.isAfter(cur.range.start)) {
@@ -14,7 +18,7 @@ export function nextBoundaryLeft(document: TextDocument, position: Position) {
       i = i.translate(0, -1)
     ) {
       if (i.isEqual(cur.range.start)) return i
-      if (isBoundary(cur.text, i)) return i
+      if (isBoundary(cur.text, i, checkSubword)) return i
     }
   }
 
@@ -31,7 +35,11 @@ export function nextBoundaryLeft(document: TextDocument, position: Position) {
   return prev.range.start
 }
 
-export function nextBoundaryRight(document: TextDocument, position: Position) {
+export function nextBoundaryRight(
+  document: TextDocument,
+  position: Position,
+  checkSubword: boolean
+) {
   // find next word boundary
   const cur = document.lineAt(position)
   for (
@@ -40,7 +48,7 @@ export function nextBoundaryRight(document: TextDocument, position: Position) {
     i = i.translate(0, 1)
   ) {
     if (i.isEqual(cur.range.end)) return i
-    if (isBoundary(cur.text, i)) return i
+    if (isBoundary(cur.text, i, checkSubword)) return i
   }
 
   // found no boundary before line end
@@ -49,20 +57,16 @@ export function nextBoundaryRight(document: TextDocument, position: Position) {
   return next.range.start.translate(0, next.firstNonWhitespaceCharacterIndex)
 }
 
-function isBoundary(
-  text: string,
-  position: Position,
-  checkSubword: boolean = true
-) {
+function isBoundary(text: string, position: Position, checkSubword: boolean) {
   const prev = char(text[position.character - 1])
   const cur = char(text[position.character])
   const next = char(text[position.character + 1])
 
   if (prev.separator !== cur.separator) return true
-  if (cur.underscore && !prev.underscore) return true
-  if (prev.underscore && !cur.underscore) return true
-  if (cur.numeric && !prev.numeric) return true
-  if (prev.numeric && !cur.numeric) return true
+  if (checkSubword && cur.underscore && !prev.underscore) return true
+  if (checkSubword && prev.underscore && !cur.underscore) return true
+  if (checkSubword && cur.numeric && !prev.numeric) return true
+  if (checkSubword && prev.numeric && !cur.numeric) return true
   if (checkSubword && cur.upper && prev.lower) return true
   if (checkSubword && cur.upper && next.lower) return true
 
